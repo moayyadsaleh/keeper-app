@@ -1,27 +1,23 @@
-import React from 'react';
-import './styles.css'; 
+import React from "react";
+import "./styles.css";
+import Note from "./Note";
+import notes from "../notes";
 
 function Header() {
   return (
-    <header> <h1>Keeper</h1></header>
+    <header>
+      {" "}
+      <h1>Keeper</h1>
+    </header>
   );
 }
 
 function Footer() {
-    const currentYear = new Date().getFullYear();
-    return (
-      <footer>
-       <p>&copy; {currentYear} Keeper App. All rights reserved.</p> 
-      </footer>
-    );
-  }
-
-function Note() {
+  const currentYear = new Date().getFullYear();
   return (
-    <div className='note'>
-      <h1>This is the note title</h1>
-      <p>This is the note content</p>
-    </div>
+    <footer>
+      <p>&copy; {currentYear} Keeper App. All rights reserved.</p>
+    </footer>
   );
 }
 
@@ -30,7 +26,9 @@ function App() {
     <div>
       <Header />
       <Footer />
-      <Note />
+      {notes.map((note) => (
+        <Note key={note.key} title={note.title} content={note.content} />
+      ))}
     </div>
   );
 }
